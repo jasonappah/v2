@@ -5,21 +5,38 @@
 // logs of what links were accessed when and where which wasn't an option previously.
 // also stale while revalidate is pretty pog, see https://vercel.com/docs/concepts/functions/edge-caching
 
-// idk how to handle 404s yet but that shouldn't be too painful i hope - if i return a 404 does it 
-// serve the 404 page for me? then i can style that and make it all nice
+import path from "path"
+import type {NextApiRequest, NextApiResponse} from "next"
+import { getLinks } from "../../lib/server/getLinks"
 
-export default async (req, res) => {
+const link = async (req: NextApiRequest, res: NextApiResponse) => {
 	const ALLOWED_METHODS = ["GET", "HEAD"]
+	const DEFAULT = "https://jasonaa.me"
 	if (!ALLOWED_METHODS.includes(req.method)) {
 		return res.send("Only GET and HEAD methods are supported.")
 	}
 
-	if (req.cookies["_vercel_no_cache"] === 1 || req.query["?_vercel_no_cache"] === 1 || req.headers["Authorization"] || req.headers["Range"]) {
+	if (
+		req.cookies["_vercel_no_cache"] === "1" ||
+		req.query["?_vercel_no_cache"] === "1" ||
+		req.headers["Authorization"] ||
+		req.headers["Range"]
+	) {
 		return res.send("sorry, we must get that cash!")
 	}
 
-	// TODO: Airtable stuff
-	
 	res.setHeader("Cache-Control", "s-maxage=10, stale-while-revalidate")
-	return res.redirect(308, "https://jasonaa.me")
+
+	if (!req.query.slug) {
+		// for vercel to cache the response it has to be a 308 redirect
+		return res.redirect(308, DEFAULT)
+	}
+	const slug = path.format(path.parse(req.query.slug as string))
+
+	const links = await getLinks()
+	const url = links[slug]["Redirect URL"] || DEFAULT
+
+	return res.redirect(308, url)
 }
+
+export default link
