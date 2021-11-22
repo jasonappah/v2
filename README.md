@@ -1,34 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# v2
 
-## Getting Started
+my wip website, built with next.js + tailwind
 
-First, run the development server:
+this site will eventually serve as a link shortener, personal blog, resume?, and cool internet place (tm)
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+i've been telling myself i want to replace my [old carrd site](https://v0.jasonaa.me/) for well over a year at this point, but i've kinda found myself stuck in a rut of designing and never building. i've been through somewhere in the range of 3-5 complete redesigns and haven't gotten anything i'm fully satisfied with. they don't look bad per se, but they don't quite give off all the vibes i want yet. eventually i came up with a design i liked, but then i thought - what if i just used all of the designs?
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+i was intitially meming but i realized i could actually do that so im going to do that. i'll likely do something along the lines of randomly serving a new theme/layout. still not sure on specifics - do i change it on every router transition? keep the same theme for each user session? one idea i just had while typing this is having the page kinda 'mutate' over time until it has morphed from one theme to another... idk im getting rambly at this point, might be worth looking into tho
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+before shipping the site should definitely:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- have epic animations / micro interactions
+- include my [scrapbook](https://scrapbook.hackclub.com/jasonaa) posts
+- look cool
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-## Learn More
+here are all the designs i've been through, in descending chronological order. some of these (specifically 2.2) are kinda ugly, and 2.0 looks far too professional/boring for my liking, but i think the others have some promise... 
 
-To learn more about Next.js, take a look at the following resources:
+i'm actively building out v2.5 in the repo right now, and the others may or may not come later
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Current Working Design (v2.5)](https://www.figma.com/file/wkd99eqYk4cPlWRUDC1ra3/Personal-Site-v2.5?node-id=1%3A2)
+- [v2.4](https://www.figma.com/file/BpHveYNyCRl7kkgjqK9Pa4/Personal-Site-v2.4?node-id=0%3A1)
+- [v2.3](https://www.figma.com/file/aGEOayFLICOYDsb7IHaoZk/Personal-Site-v2.3?node-id=1%3A89)
+- [v2.2 (ew... could be better with some work)](https://www.figma.com/file/PxS1TSDgfkM43VCre0A0nu/Personal-Site-v2.2?node-id=0%3A1)
+- [v2.1](https://www.figma.com/file/Qqjto24g26wLRwYIHXAt1y/Personal-Site-v2.1?node-id=0%3A1)
+- [v2.0 (ehh)](https://www.figma.com/file/0woFYwn270gX1f6q5JpD8N/Personal-Site-v2?node-id=0%3A1)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+any suggestions welcome!
