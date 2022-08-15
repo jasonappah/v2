@@ -12,13 +12,13 @@ const Index = () => {
   return (
   <>
   <Head>
-  <title>Jason Antwi-Appah</title>
+    <title>Jason Antwi-Appah</title>
     <meta name="viewport" content="width=device-width" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Jason Antwi-Appah" />
-<meta property="og:description" content="video.movie" />
-<meta property="og:url" content="https://www.imdb.com/title/tt0117500/" />
-    </Head>
+    <meta property="og:url" content="https://jasonaa.me" />
+    <meta property="og:image" content="/og.png"/>
+  </Head>
     <style global jsx>{
         `@font-face {
             font-family: "klima-web";
