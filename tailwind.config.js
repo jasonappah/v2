@@ -4,11 +4,10 @@ module.exports = {
     extend: {
       colors: {
         'special-blue': '#CED3FE',
+        'back':'#3730a3',
+        'content': '#ffffff',
+        'accent': '#fcd34d',
       }
     },
-  },
-  variants: {
-    extend: {},
-  },
-  plugins: [],
+  }
 }
