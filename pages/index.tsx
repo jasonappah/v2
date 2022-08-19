@@ -40,15 +40,6 @@ const Index = () => {
     <>
       <Head>
         <title>Jason Antwi-Appah</title>
-        <meta name="viewport" content="width=device-width" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Jason Antwi-Appah" />
-        <meta
-          property="og:description"
-          content="Hi! I'm a 17-year-old student and maker that loves all sorts of tech."
-        />
-        <meta property="og:url" content="https://jasonaa.me" />
-        <meta property="og:image" content="/og.png" />
       </Head>
       <div className="flex justify-center w-full text-sm bg-back text-[1.25em] sm:text-[1.3em]">
         <div className="flex flex-col items-start justify-center leading-9 gap-y-4 my-[4em] mx-[2em] sm:m-16 max-w-2xl text-content font-[klima-web]">
@@ -61,8 +52,7 @@ const Index = () => {
           <p>
             🛬 Just in case you&apos;re stalking my website wondering where I
             got my accent from, I was raised in London 🇬🇧, but now live in
-            Austin, TX 🤠 and attend school at the University of Texas at
-            Dallas.
+            Austin, TX and attend school at the University of Texas at Dallas.
           </p>
           <p>Right now, I&apos;m:</p>
           <ul>
