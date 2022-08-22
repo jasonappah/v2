@@ -19,16 +19,17 @@ function Link({
   return (
     <a
       href={href}
-      className={"text-accent hover:text-back hover:bg-content transition"}
+      className="transition text-accent hover:text-back hover:bg-content"
     >
       {children}
     </a>
   );
 }
 
-export const getStaticProps: GetStaticProps = () => {
+export const getStaticProps: GetStaticProps<{ palette: string }> = () => {
   const paletteOptions = Object.keys(styles);
-  const palette = paletteOptions[Math.floor(Math.random() * paletteOptions.length)];
+  const palette =
+    paletteOptions[Math.floor(Math.random() * paletteOptions.length)];
   return {
     props: {
       palette,
@@ -41,7 +42,6 @@ function Index({ palette }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [electronicMailIdentifier, setEmail] = useState('...');
   useEffect(() => {
     setEmail(Buffer.from('aGV5QGphc29uYWEubWU=', 'base64').toString('utf8'));
-
     console.log(
       '👋 you should also follow my Instagram: https://instagram.com/jasonaa_'
     );
@@ -74,14 +74,13 @@ function Index({ palette }: InferGetStaticPropsType<typeof getStaticProps>) {
                 ✨ Learning and hacking with friends in{' '}
                 <Link href="https://hackclub.com">Hack Club</Link>
               </li>
-
               <li>
                 🎓 Completing a Computer Science degree at{' '}
                 <Link href="https://utdallas.edu">UT Dallas</Link>
               </li>
             </ul>
             <p>
-              Outside of software engineering, I love music production 🎧,
+              Outside of software engineering, I love music production 🎹,
               broadcast/audiovisual technology 📹, and all things technical
               theatre 🎭&nbsp;!{' '}
               <Link href="https://scrapbook.hackclub.com/jasonaa">

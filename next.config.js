@@ -1,12 +1,15 @@
+/**
+ * @type {import('next').NextConfig}
+ */
 module.exports = {
-	async rewrites() {
-		return {
-			fallback: [
-				{
-					source: "/:path*",
-					destination: `/api/link/?slug=:path*`
-				}
-			]
-		}
-	}
-}
+  rewrites() {
+    return {
+      fallback: [
+        {
+          source: '/:path*',
+          destination: `/api/link/?slug=:path*`,
+        },
+      ],
+    };
+  }
+};
