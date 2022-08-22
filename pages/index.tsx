@@ -92,6 +92,7 @@ function Index({ palette }: InferGetStaticPropsType<typeof getStaticProps>) {
             <p>
               Feel free to shoot me an email →&nbsp;
               <Link href={`mailto:${electronicMailIdentifier}`}>
+                <noscript>sorry, you need JavaScript enabled for this</noscript>
                 {electronicMailIdentifier}
               </Link>
               . You also can find me on{' '}
