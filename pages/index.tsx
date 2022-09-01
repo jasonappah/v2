@@ -60,9 +60,8 @@ function Index({ palette }: InferGetStaticPropsType<typeof getStaticProps>) {
               student and maker that loves all sorts of tech.
             </p>
             <p>
-              🛬 Just in case you&apos;re stalking my website wondering where I
-              got my accent from, I was raised in London 🇬🇧, but now live in
-              Austin, TX and attend school at the University of Texas at Dallas.
+              🛬 I was raised in London, but now live in Austin, TX and attend
+              school at the University of Texas at Dallas.
             </p>
             <p>Right now, I&apos;m:</p>
             <ul>
@@ -80,9 +79,9 @@ function Index({ palette }: InferGetStaticPropsType<typeof getStaticProps>) {
               </li>
             </ul>
             <p>
-              Outside of software engineering, I love music production 🎹,
-              broadcast/audiovisual technology 📹, and all things technical
-              theatre 🎭&nbsp;!{' '}
+              Outside of software engineering, I love music production,
+              broadcast/audiovisual technology, and all things technical
+              theatre!{' '}
               <Link href="https://scrapbook.hackclub.com/jasonaa">
                 My Scrapbook
               </Link>{' '}
@@ -112,13 +111,9 @@ function Index({ palette }: InferGetStaticPropsType<typeof getStaticProps>) {
               , if you&apos;re into that.
             </p>
             <p className="text-[0.01em]">
-              psssst if you’re&nbsp;
-              <span className="line-through bg-content text-back">
-                young enough to read this
-              </span>{' '}
-              a teen interested in a community of other teens in computer
-              science or tech in general, you should join{' '}
-              <Link href="https://hackclub.com">Hack Club!</Link>
+              psssst if you&apos;re a teen interested in joining a community of
+              other teens in computer science or tech in general, you should
+              check out <Link href="https://hackclub.com">Hack Club!</Link>
             </p>
           </div>
         </div>
