@@ -107,7 +107,8 @@ function Index({ palette }: InferGetStaticPropsType<typeof getStaticProps>) {
                 }`}
               >
                 source code
-              </Link>.
+              </Link>
+              .
             </p>
             <p className="text-[0.01em]">
               psssst if you&apos;re a teen interested in joining a community of
