@@ -1,5 +1,7 @@
+import Link from 'next/link';
+
 const Signature = () => (
-  <a href="https://jasonaa.me">
+  <Link href="/">
     <svg
       width="156"
       height="90"
@@ -17,7 +19,7 @@ const Signature = () => (
         strokeWidth="0.225"
       />
     </svg>
-  </a>
+  </Link>
 );
 
 export default Signature;

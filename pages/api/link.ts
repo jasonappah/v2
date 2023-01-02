@@ -34,7 +34,11 @@ const link = async (req: NextApiRequest, res: NextApiResponse) => {
   const slug = path.format(path.parse(req.query.slug as string));
 
   const links = await getLinks();
-  const url = links[slug]['Redirect URL'] || DEFAULT;
+  const thing = links[slug];
+  if (!thing) {
+    return res.redirect(308, DEFAULT);
+  }
+  const url = thing['Redirect URL'] || DEFAULT;
 
   return res.redirect(308, url);
 };

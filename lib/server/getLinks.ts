@@ -1,6 +1,6 @@
 import { AirtablePlusPlus, AirtablePlusPlusRecord } from 'airtable-plusplus';
 
-interface ILink {
+export interface ILink {
   'Friendly Name': string;
   Slug: string;
   'Redirect URL': string;
@@ -15,14 +15,16 @@ export async function getLinks(): Promise<Record<string, ILink>> {
     baseId: process.env.AIRTABLE_BASE_ID,
     tableName: 'Table 1',
   });
-  const links = (await airtable.read({
+  const records = (await airtable.read({
     filterByFormula: '{Active}',
   })) as unknown as AirtablePlusPlusRecord<ILink>[];
 
-  const yeah = {};
-  for (const record of links) {
-    yeah[record.fields.Slug] = record.fields;
+  const links = {};
+  for (const record of records) {
+    if (record.fields.Slug !== '.') {
+      links[record.fields.Slug] = record.fields;
+    }
   }
 
-  return yeah;
+  return links;
 }
