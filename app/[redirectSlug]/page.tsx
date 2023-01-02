@@ -1,10 +1,9 @@
 import { notFound, redirect } from 'next/navigation';
-import { getLinks } from '../../../lib/server/getLinks';
+import { getLinks } from '../../lib/server/getLinks';
 
 export const dynamic = 'error';
 
 async function LinkShortener({ params }: { params: { redirectSlug: string } }) {
-  console.log('hi');
   const { redirectSlug } = params;
   const links = await getLinks();
 
@@ -12,10 +11,8 @@ async function LinkShortener({ params }: { params: { redirectSlug: string } }) {
 
   const link = links[redirectSlug];
   if (link) {
-    console.log({ link });
     redirect(link['Redirect URL']);
   } else {
-    console.log('lol');
     notFound();
   }
 }

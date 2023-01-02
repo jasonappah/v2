@@ -1,6 +1,6 @@
-import Email from '../../components/Email';
-import Signature from '../../components/Signature';
-import StyledLink from '../../components/StyledLink';
+import Email from '../components/Email';
+import Signature from '../components/Signature';
+import StyledLink from '../components/StyledLink';
 
 function Content() {
   return (
@@ -36,9 +36,10 @@ function Content() {
 
       <p>
         Feel free to shoot me an email →&nbsp;
-        <Email/>
-        . You also can find me on{' '}
-        <StyledLink href="https://github.com/jasonappah">GitHub</StyledLink>,{' '}
+        <Email />. You also can find me on{' '}
+        <StyledLink href="https://github.com/jasonappah">
+          GitHub
+        </StyledLink>,{' '}
         <StyledLink href="https://twitter.com/jasonaa_">Twitter</StyledLink> and{' '}
         <StyledLink href="https://linkedin.com/in/jasonaa">LinkedIn</StyledLink>
         .
