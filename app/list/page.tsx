@@ -1,5 +1,5 @@
-import Signature from '../../../components/Signature';
-import { getLinks } from '../../../lib/server/getLinks';
+import Signature from '../../components/Signature';
+import { getLinks } from '../../lib/server/getLinks';
 
 export const dynamic = 'error';
 
