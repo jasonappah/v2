@@ -7,10 +7,11 @@ async function LinkShortener({ params }: { params: { redirectSlug: string } }) {
   const { redirectSlug } = params;
   const links = await getLinks();
 
-  if (!redirect) notFound();
+  if (!redirectSlug) notFound();
 
   const link = links[redirectSlug];
   if (link) {
+    console.log(link['Redirect URL']);
     redirect(link['Redirect URL']);
   } else {
     notFound();
