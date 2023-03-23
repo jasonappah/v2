@@ -12,11 +12,18 @@
     "lint:fix": "next lint --fix"
   },
   "dependencies": {
-    "airtable-plusplus": "0.3.3",
-    "next": "^12.2.5",
+    "@next/font": "^13.2.4",
+    "@vercel/analytics": "^0.1.11",
+    "katex": "^0.16.4",
+    "next": "^13.2.4",
+    "notion-client": "^6.16.0",
+    "notion-utils": "^6.16.0",
+    "prismjs": "^1.29.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tailwindcss": "^3.1.8",
+    "react-notion-x": "^6.16.0",
+    "react-tweet-embed": "^2.0.0",
+    "tailwindcss": "^3.2.7",
     "terser": "^5.14.2"
   },
   "devDependencies": {
@@ -31,7 +38,7 @@
     "eslint": "^8.4.1",
     "eslint-config-airbnb": "^19.0.2",
     "eslint-config-airbnb-typescript": "^16.1.0",
-    "eslint-config-next": "11.1.2",
+    "eslint-config-next": "^13.1.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-wesbos": "3.0.2",
     "eslint-plugin-html": "^6.2.0",

@@ -1,35 +1,23 @@
- /* .original {
-     --background: #3730a3;
-     --accent: #fcd34d;
-     --foreground: #ffffff;
- } */
+.maroonPeach {
+  --background: #391021;
+  --accent: #fcd34d;
+  --foreground: #ffffffdd;
+}
 
- .moreContrast {
-     --background: #1B138A;
-     --accent: #F5C31D;
-     --foreground: #ffffffee;
- }
+.greenGold {
+  --background: #002e2c;
+  --accent: #fcd34d;
+  --foreground: #ffffffde;
+}
 
- .maroonPeach {
-     --background: #391021;
-     --accent: #fcd34d;
-     --foreground: #ffffffdd;
- }
+.yellowGold {
+  --background: #4A441E;
+  --accent: #fcd34d;
+  --foreground: #ffffffde;
+}
 
- .greenGold {
-     --background: #002e2c;
-     --accent: #fcd34d;
-     --foreground: #ffffffde;
- }
-
- .yellowGold {
-     --background: #4A441E;
-     --accent: #fcd34d;
-     --foreground: #ffffffde;
- }
-
- .purpleBlue {
-     --background: #420937;
-     --accent: #4AB0C9;
-     --foreground: #ffffffde;
- }
+.purpleBlue {
+  --background: #420937;
+  --accent: #4AB0C9;
+  --foreground: #ffffffde;
+}
