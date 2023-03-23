@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import 'tailwindcss/tailwind.css';
 import localFont from '@next/font/local';
 import AnalyticsWrapper from '../components/Analytics';
@@ -11,11 +12,7 @@ const klimaWeb = localFont({
 
 export const revalidate = 60;
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+function RootLayout({ children }: { children: React.ReactNode }) {
   const paletteOptions = Object.keys(styles);
   const palette =
     paletteOptions[Math.floor(Math.random() * paletteOptions.length)];
@@ -34,3 +31,28 @@ export default function RootLayout({
     </html>
   );
 }
+
+export const metadata: Metadata = {
+  title: 'Jason Antwi-Appah',
+  creator: 'Jason Antwi-Appah',
+  description: "Hi! I'm a student and maker that loves all sorts of tech.",
+  icons: {
+    icon: '/favicon.png',
+  },
+  openGraph: {
+    type: 'website',
+    title: 'Jason Antwi-Appah',
+    description: "Hi! I'm a student and maker that loves all sorts of tech.",
+    url: 'https://jasonaa.me',
+    locale: 'en-US',
+    images: [
+      {
+        url: '/og.png',
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+};
+
+export default RootLayout;

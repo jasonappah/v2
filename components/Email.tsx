@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import StyledLink from './StyledLink';
 
-export default function Email() {
+function Email() {
   const [electronicMailIdentifier, setEmail] = useState('...');
   useEffect(() => {
     setEmail(Buffer.from('aGV5QGphc29uYWEubWU=', 'base64').toString('utf8'));
@@ -18,3 +18,5 @@ export default function Email() {
     </StyledLink>
   );
 }
+
+export default Email;

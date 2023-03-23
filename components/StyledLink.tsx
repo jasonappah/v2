@@ -13,7 +13,7 @@ function StyledLink({
 >) {
   return (
     <Link
-      href={href}
+      href={href ?? '#'}
       className="transition text-accent hover:text-back hover:bg-content"
     >
       {children}
