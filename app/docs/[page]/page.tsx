@@ -27,8 +27,17 @@ async function Page({ params }: { params: { page: string } }) {
   );
 }
 
+const defaultMapPageUrl = (rootPageId?: string) => (p: string) => {
+  const pageId = (p || '').replace(/-/g, '');
+
+  if (rootPageId && pageId === rootPageId) {
+    return '/';
+  }
+  return `/${pageId}`;
+};
+
 export async function generateStaticParams() {
-  const mapPageUrl = (page: string) => `/docs/${page}`;
+  const mapPageUrl = defaultMapPageUrl(process.env.NOTION_BASE_PAGE_ID);
   const pages = await getAllPagesInSpace(
     process.env.NOTION_BASE_PAGE_ID as string,
     process.env.NOTION_SPACE_ID,

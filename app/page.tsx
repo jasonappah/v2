@@ -16,7 +16,7 @@ function Content() {
     },
   ];
   return (
-    <div className='flex flex-col items-start justify-center gap-4 max-w-2xl'>
+    <div className="flex flex-col items-start justify-center gap-4 max-w-2xl">
       <Signature />
       <p>
         🧑🏾‍💻 Hey there! I&apos;m Jason Antwi-Appah. I&apos;m a 17-year-old student

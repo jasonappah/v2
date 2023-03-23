@@ -68,6 +68,7 @@ const Pdf = dynamic(
   }
 );
 const Modal = dynamic(
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   () => import('react-notion-x/build/third-party/modal').then((m) => m.Modal),
   {
     ssr: false,
