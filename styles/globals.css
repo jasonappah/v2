@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.notion-page {
+    --notion-font: @apply font-sans;       
+}

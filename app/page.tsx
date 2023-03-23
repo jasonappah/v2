@@ -16,7 +16,7 @@ function Content() {
     },
   ];
   return (
-    <>
+    <div className='flex flex-col items-start justify-center gap-4 max-w-2xl'>
       <Signature />
       <p>
         🧑🏾‍💻 Hey there! I&apos;m Jason Antwi-Appah. I&apos;m a 17-year-old student
@@ -27,15 +27,15 @@ function Content() {
         at the University of Texas at Dallas.
       </p>
       <p>
-      🎓 Right now, I&apos;m a computer science undergrad at{' '}
+        🎓 Right now, I&apos;m a computer science undergrad at{' '}
         <StyledLink href="https://utdallas.edu">UT Dallas</StyledLink> (c/o
         2025). I'm involved in student organizations on campus, like{' '}
-        <StyledLink href="https://about.utdnebula.com">Nebula Labs</StyledLink>, where
-        I help lead development of a web-based degree planning tool for
+        <StyledLink href="https://about.utdnebula.com">Nebula Labs</StyledLink>,
+        where I help lead development of a web-based degree planning tool for
         students.
       </p>
       <p>
-      ✨ Outside of software engineering, I love music production,
+        ✨ Outside of software engineering, I love music production,
         broadcast/audiovisual technology, and all things technical theatre!{' '}
         <StyledLink href="https://scrapbook.hackclub.com/jasonaa">
           My Scrapbook
@@ -65,7 +65,7 @@ function Content() {
         teens in computer science or tech in general, you should check out{' '}
         <StyledLink href="https://hackclub.com">Hack Club!</StyledLink>
       </p>
-    </>
+    </div>
   );
 }
 
