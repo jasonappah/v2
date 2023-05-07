@@ -13,7 +13,6 @@
     "lint:fix": "next lint --fix"
   },
   "dependencies": {
-    "@next/font": "^13.2.4",
     "@vercel/analytics": "^0.1.11",
     "katex": "^0.16.4",
     "next": "^13.4.1",

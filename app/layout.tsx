@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import '../styles/globals.css';
-import localFont from '@next/font/local';
+import localFont from "next/font/local";
 import AnalyticsWrapper from '../components/Analytics';
 
 import styles from '../styles/palettes.module.css';
