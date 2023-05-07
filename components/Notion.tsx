@@ -81,7 +81,7 @@ const Notion: typeof NotionRenderer = (props) => (
   <NotionRenderer
     {...props}
     // TODO: use router to figure out relative path instead of hardcoding to docs
-    mapPageUrl={(pageId) => `/docs/${pageId}`}
+    mapPageUrl={(pageId) => `/docs/${pageId.replaceAll(/-/g, '')}`}
     components={{
       nextImage: Image,
       nextLink: Link,

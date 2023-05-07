@@ -1,7 +1,7 @@
 import { NotionAPI } from 'notion-client';
-import { getAllPagesInSpace, getPageTitle } from 'notion-utils';
+import { getAllPagesInSpace, getPageTitle, parsePageId } from 'notion-utils';
 
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import Signature from '../../../components/Signature';
 import NotionRenderer from '../../../components/Notion';
 
@@ -11,7 +11,10 @@ export const revalidate = 60;
 
 async function Page({ params }: { params: { page: string } }) {
   const { page } = params;
-  const recordMap = await notion.getPage(page);
+  const id = parsePageId(page);
+  if (id !== page) return redirect(id);
+
+  const recordMap = await notion.getPage(id);
   if (!recordMap) return notFound();
 
   const title = getPageTitle(recordMap);
@@ -28,7 +31,7 @@ async function Page({ params }: { params: { page: string } }) {
 }
 
 const defaultMapPageUrl = (rootPageId?: string) => (p: string) => {
-  const pageId = (p || '').replace(/-/g, '');
+  const pageId = (p || '').replaceAll(/-/g, '');
 
   if (rootPageId && pageId === rootPageId) {
     return '/';
