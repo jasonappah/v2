@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import '../styles/globals.css';
-import localFont from "next/font/local";
+import localFont from 'next/font/local';
 import AnalyticsWrapper from '../components/Analytics';
 
 import styles from '../styles/palettes.module.css';
@@ -36,13 +36,10 @@ export const metadata: Metadata = {
   title: 'Jason Antwi-Appah',
   creator: 'Jason Antwi-Appah',
   description: "Hi! I'm a student and maker that loves all sorts of tech.",
-  icons: {
-    icon: '/favicon.png',
-  },
   openGraph: {
     type: 'website',
-    title: 'Jason Antwi-Appah',
-    description: "Hi! I'm a student and maker that loves all sorts of tech.",
+    title: { default: 'Jason Antwi-Appah', template: '%s | Jason Antwi-Appah' },
+    description: '🛠️ 👨🏾‍💻 🎓 ✨',
     url: 'https://jasonaa.me',
     locale: 'en-US',
     images: [

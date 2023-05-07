@@ -1,7 +1,8 @@
 import { NotionAPI } from 'notion-client';
 import { getAllPagesInSpace, getPageTitle, parsePageId } from 'notion-utils';
 
-import { notFound, redirect } from 'next/navigation';
+import { notFound, redirect, useRouter } from 'next/navigation';
+import { Metadata } from 'next';
 import Signature from '../../../components/Signature';
 import NotionRenderer from '../../../components/Notion';
 
@@ -9,7 +10,8 @@ const notion = new NotionAPI();
 
 export const revalidate = 60;
 
-async function Page({ params }: { params: { page: string } }) {
+type Props = { params: { page: string } };
+async function Page({ params }: Props) {
   const { page } = params;
   const id = parsePageId(page);
   if (id !== page) return redirect(id);
@@ -18,6 +20,7 @@ async function Page({ params }: { params: { page: string } }) {
   if (!recordMap) return notFound();
 
   const title = getPageTitle(recordMap);
+  // console.log(recordMap.block)
 
   return (
     <div className="flex flex-col gap-8 w-screen px-24 items-center">
@@ -55,6 +58,21 @@ export async function generateStaticParams() {
     .filter((path) => path && path !== '/');
 
   return paths.map((path) => ({ page: path }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { page } = params;
+  const id = parsePageId(page);
+  if (id !== page) return redirect(id);
+
+  const recordMap = await notion.getPage(id);
+  if (!recordMap) return notFound();
+
+  const title = getPageTitle(recordMap);
+
+  return {
+    title,
+  };
 }
 
 export default Page;

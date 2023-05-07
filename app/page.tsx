@@ -11,7 +11,7 @@ function Content() {
       }`,
     },
     {
-      name: 'links',
+      name: 'more links',
       href: '/links',
     },
   ];
@@ -19,8 +19,9 @@ function Content() {
     <div className="flex flex-col items-start justify-center gap-4 max-w-2xl">
       <Signature />
       <p>
-        🧑🏾‍💻 Hey there! I&apos;m Jason Antwi-Appah. I&apos;m a 17-year-old student
-        and maker that loves all sorts of tech.
+        🧑🏾‍💻 Hey there! I&apos;m Jason Antwi-Appah. I&apos;m a student and
+        software engineer with a passion for building and learning about all
+        sorts of tech.
       </p>
       <p>
         🛬 I was raised in London, but now live in Austin, TX and attend school
@@ -37,10 +38,10 @@ function Content() {
       <p>
         ✨ Outside of software engineering, I love music production,
         broadcast/audiovisual technology, and all things technical theatre!{' '}
-        <StyledLink href="https://scrapbook.hackclub.com/jasonaa">
+        {/* <StyledLink href="https://scrapbook.hackclub.com/jasonaa">
           My Scrapbook
         </StyledLink>{' '}
-        has some of the things I&apos;m working on.
+        has some of the things I&apos;m working on. */}
       </p>
 
       <p>
@@ -53,18 +54,15 @@ function Content() {
         <StyledLink href="https://linkedin.com/in/jasonaa">LinkedIn</StyledLink>
         .
       </p>
-      <ol className="flex gap-3">
+      <ul className="flex gap-5 list-inside list-disc ">
         {nav.map(({ name, href }) => (
-          <StyledLink key={name} href={href}>
-            {name}
-          </StyledLink>
+          <li className="first:list-none not-first:pl-5">
+            <StyledLink key={name} href={href}>
+              {name}
+            </StyledLink>
+          </li>
         ))}
-      </ol>
-      <p className="text-[0.01em]">
-        psssst if you&apos;re a teen interested in joining a community of other
-        teens in computer science or tech in general, you should check out{' '}
-        <StyledLink href="https://hackclub.com">Hack Club!</StyledLink>
-      </p>
+      </ul>
     </div>
   );
 }
