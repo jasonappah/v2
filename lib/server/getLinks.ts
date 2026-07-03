@@ -1,3 +1,5 @@
+import { Client } from "@notionhq/client";
+
 export interface ILink {
   "Friendly Name": string;
   Slug: string;
@@ -38,4 +40,25 @@ export async function getLinks(): Promise<Record<string, ILink>> {
   }
 
   return links;
+}
+
+async function _getLinksFromNotion(): Promise<Record<string, ILink>> {
+  // TODO: finish impl?
+  // TODO: hoist client def into module scope?
+  const notion = new Client({
+    auth: process.env.NOTION_TOKEN,
+  });
+  const dbId = process.env.NOTION_URL_SHORTENER_DATABASE_ID;
+  if (!dbId) {
+    throw new Error("NOTION_URL_SHORTENER_DATABASE_ID is not set");
+  }
+  const myPage = await notion.dataSources.query({
+    data_source_id: dbId,
+  });
+
+  // TODO: force ISR everywhere
+  // const rows = iterateAllDataSourceRows(notion, dbId);
+  console.log({ myPage });
+
+  return {}
 }
