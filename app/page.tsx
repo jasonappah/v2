@@ -52,8 +52,8 @@ function Content() {
       </p>
       <ul className="flex gap-5 list-inside list-disc ">
         {nav.map(({ name, href }) => (
-          <li className="first:list-none not-first:pl-5">
-            <StyledLink key={name} href={href}>
+          <li className="first:list-none not-first:pl-5" key={name}>
+            <StyledLink href={href}>
               {name}
             </StyledLink>
           </li>
