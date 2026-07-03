@@ -1,7 +1,7 @@
 export interface ILink {
-  'Friendly Name': string;
+  "Friendly Name": string;
   Slug: string;
-  'Redirect URL': string;
+  "Redirect URL": string;
   Description: string;
   Active: boolean;
   Public: boolean;
@@ -20,7 +20,7 @@ export async function getLinks(): Promise<Record<string, ILink>> {
     `https://api.airtable.com/v0/${process.env
       .AIRTABLE_BASE_ID!}/${encodeURIComponent(
       process.env.AIRTABLE_TABLE_NAME!
-    )}?&view=Grid%20view&filterByFormula=${encodeURIComponent('{Active}')}`,
+    )}?&view=Grid%20view&filterByFormula=${encodeURIComponent("{Active}")}`,
     {
       headers: {
         Authorization: `Bearer ${process.env.AIRTABLE_API_KEY!}`,
@@ -32,7 +32,7 @@ export async function getLinks(): Promise<Record<string, ILink>> {
 
   const links = {};
   for (const record of records.records) {
-    if (record.fields.Slug !== '.') {
+    if (record.fields.Slug !== ".") {
       links[record.fields.Slug] = record.fields;
     }
   }
