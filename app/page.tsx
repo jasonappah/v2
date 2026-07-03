@@ -38,10 +38,6 @@ function Content() {
       <p>
         ✨ Outside of software engineering, I love music production,
         broadcast/audiovisual technology, and all things technical theatre!{' '}
-        {/* <StyledLink href="https://scrapbook.hackclub.com/jasonaa">
-          My Scrapbook
-        </StyledLink>{' '}
-        has some of the things I&apos;m working on. */}
       </p>
 
       <p>
