@@ -1,7 +1,8 @@
 import { notFound, redirect } from 'next/navigation';
 import { getLinks } from '../../lib/server/getLinks';
 
-async function LinkShortener({ params }: { params: { redirectSlug: string } }) {
+async function LinkShortener(props: { params: Promise<{ redirectSlug: string }> }) {
+  const params = await props.params;
   const { redirectSlug } = params;
   const links = await getLinks();
 

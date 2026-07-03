@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import '../styles/globals.css';
 import localFont from 'next/font/local';
-import AnalyticsWrapper from '../components/Analytics';
+import { Analytics } from '@vercel/analytics/react';
 
 import styles from '../styles/palettes.module.css';
 
@@ -26,7 +26,7 @@ function RootLayout({ children }: { children: React.ReactNode }) {
             </div>
           </div>
         </div>
-        <AnalyticsWrapper />
+        <Analytics />
       </body>
     </html>
   );

@@ -127,7 +127,7 @@
   }
 
   const jsDateToIcalDate = (date) => {
-    return date.toISOString().match(/(\d)|([TZ])/g).join("")
+    return date.toISOString().match(/(\d)|([TZ])/g).join("");
   }
 
   const event = (courseNum, start, end, location, description) => {

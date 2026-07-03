@@ -10,10 +10,12 @@ const notion = new NotionAPI();
 
 export const revalidate = 60;
 
-type Props = { params: { page: string } };
-async function Page({ params }: Props) {
+type Props = { params: Promise<{ page: string }> };
+async function Page(props: Props) {
+  const params = await props.params;
   const { page } = params;
   const id = parsePageId(page);
+  if (!id) return notFound();
   if (id !== page) return redirect(id);
 
   const recordMap = await notion.getPage(id);
@@ -60,9 +62,11 @@ export async function generateStaticParams() {
   return paths.map((path) => ({ page: path }));
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const params = await props.params;
   const { page } = params;
   const id = parsePageId(page);
+  if (!id) return notFound();
   if (id !== page) return redirect(id);
 
   const recordMap = await notion.getPage(id);

@@ -1,5 +1,11 @@
 # v2
 
+todos:
+- [x] next.js upgrade
+- [] replace airtable shortener with notion
+- [] update index copy
+- [] light index redesign?
+
 august 2022 update: i have a little confession to make - i gave up (for now). i needed an updated site since my previous one still says i'm a high school senior, so i made something quick on a plane back to austin. i probably spent an hour on this total*, no tailwind, limited react usage, just plain old html css. eventually i will build the fancy website but for now this exists and looks pretty good. 
 
 see my initial thoughts and designs from december 2021 below ⬇️
