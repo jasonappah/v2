@@ -1,3 +1,4 @@
+import Email from '../../components/Email';
 import Signature from '../../components/Signature';
 import { getLinks } from '../../lib/server/getLinks';
 
@@ -8,6 +9,7 @@ async function LinkList() {
   return (
     <div className="flex flex-col gap-8 items-center">
       <Signature />
+      <Email />
       {links.map((link) => (
         <button key={link.Slug} type="button">
           <a

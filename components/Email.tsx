@@ -4,9 +4,9 @@ import { useEffect, useState } from 'react';
 import StyledLink from './StyledLink';
 
 function Email() {
-  const [electronicMailIdentifier, setEmail] = useState('...');
+  const [electronicMailIdentifier, setElectronicMailIdentifier] = useState('...');
   useEffect(() => {
-    setEmail(Buffer.from('aGV5QGphc29uYWEubWU=', 'base64').toString('utf8'));
+    setElectronicMailIdentifier(Buffer.from('aGV5QGphc29uYWEubWU=', 'base64').toString('utf8'));
     console.log(
       '👋 you should also follow my Instagram: https://instagram.com/jasonaa_'
     );
