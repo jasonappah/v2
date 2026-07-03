@@ -28,12 +28,11 @@ function Content() {
         at the University of Texas at Dallas.
       </p>
       <p>
-        🎓 Right now, I&apos;m a computer science undergrad at{' '}
-        <StyledLink href="https://utdallas.edu">UT Dallas</StyledLink> (c/o
-        2025). I'm involved in student organizations on campus, like{' '}
-        <StyledLink href="https://about.utdnebula.com">Nebula Labs</StyledLink>,
-        where I help lead development of a web-based degree planning tool for
-        students.
+        🎓 Currently I&apos;m a computer science undergrad at{' '}
+        <StyledLink href="https://utdallas.edu">UT Dallas</StyledLink> (c/o 2026). During my time here I've gotten to sing in a choir, build all sorts of software, worked at some pretty cool places, led in various student orgs, along with a whole bunch of other stuff I can't fit into this already long sentence, but has definitely changed me for the better.
+      </p>
+      <p>
+        😇  I'm up to some other stuff <StyledLink href="/now">right now</StyledLink>. You can check out my <StyledLink href="/resume">resume</StyledLink> if you want to see a more complete list of my software experience.
       </p>
       <p>
         ✨ Outside of software engineering, I love music production,
@@ -50,7 +49,7 @@ function Content() {
         <StyledLink href="https://linkedin.com/in/jasonaa">LinkedIn</StyledLink>
         .
       </p>
-      <ul className="flex gap-5 list-inside list-disc ">
+      <ul className="flex gap-5 list-inside list-disc">
         {nav.map(({ name, href }) => (
           <li className="first:list-none not-first:pl-5" key={name}>
             <StyledLink href={href}>
