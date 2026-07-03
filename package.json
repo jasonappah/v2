@@ -13,6 +13,7 @@
     "lint:fix": "next lint --fix"
   },
   "dependencies": {
+    "@notionhq/client": "^5.22.0",
     "@vercel/analytics": "^0.1.11",
     "katex": "^0.16.4",
     "next": "^13.4.1",
