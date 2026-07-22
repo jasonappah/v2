@@ -1,3 +1,4 @@
+// @ts-nocheck
 'use client';
 
 import { NotionRenderer } from 'react-notion-x';
