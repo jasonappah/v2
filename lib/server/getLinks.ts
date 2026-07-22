@@ -1,6 +1,6 @@
 import { Client as NotionAPIClient, isFullPageOrDataSource } from "@notionhq/client";
 import { DataSourceObjectResponse, EmptyObject, PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
-import { cacheTag } from "next/cache";
+import { unstable_cache } from "next/cache";
 
 export interface ILink {
   "Friendly Name": string;
@@ -20,8 +20,6 @@ interface AirtableRes<T> {
 }
 
 async function getLinksFromAirtable(): Promise<Record<string, ILink>> {
-  "use cache";
-  cacheTag("urlShortenerLinks")
   const res = await fetch(
     `https://api.airtable.com/v0/${process.env
       .AIRTABLE_BASE_ID!}/${encodeURIComponent(
@@ -31,6 +29,7 @@ async function getLinksFromAirtable(): Promise<Record<string, ILink>> {
       headers: {
         Authorization: `Bearer ${process.env.AIRTABLE_API_KEY!}`,
       },
+      next: { revalidate: 60, tags: ["urlShortenerLinks"] },
     }
   );
   const records = (await res.json()) as unknown as AirtableRes<ILink>;
@@ -49,10 +48,8 @@ const notionClient = new NotionAPIClient({
   auth: process.env.NOTION_TOKEN,
 });
 
-const getLinksFromNotion: () => Promise<Record<string, ILink>> = 
-  async () => {
-    "use cache";
-    cacheTag("urlShortenerLinks")
+const getLinksFromNotion = unstable_cache(
+  async (): Promise<Record<string, ILink>> => {
     const dbId = process.env.NOTION_URL_SHORTENER_DATABASE_ID;
     if (!dbId) {
       throw new Error("NOTION_URL_SHORTENER_DATABASE_ID is not set");
@@ -79,7 +76,10 @@ const getLinksFromNotion: () => Promise<Record<string, ILink>> =
     }
   
     return links
-  }
+  },
+  ["url-shortener-links"],
+  { tags: ["urlShortenerLinks"], revalidate: 60 }
+)
 
 // Turns Notion property map with detailed meta (ex: id, rich text formating) into 
 // simple key -> primitive (string/boolean) map for easier access

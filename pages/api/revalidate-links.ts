@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { revalidatePath, updateTag } from 'next/cache';
+import { revalidatePath, revalidateTag } from 'next/cache';
 
 export default async function handler(
   req: NextApiRequest,
@@ -14,7 +14,7 @@ export default async function handler(
   }
 
   try {
-    updateTag('urlShortenerLinks')
+    revalidateTag('urlShortenerLinks', 'max')
     revalidatePath('/[redirectSlug]', 'page')
     return res.json({ revalidated: true });
   } catch (err) {
