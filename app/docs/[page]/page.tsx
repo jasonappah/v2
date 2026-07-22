@@ -1,7 +1,7 @@
 import { NotionAPI } from 'notion-client';
 import { getAllPagesInSpace, getPageTitle, parsePageId } from 'notion-utils';
 
-import { notFound, redirect, useRouter } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { Metadata } from 'next';
 import Signature from '../../../components/Signature';
 import NotionRenderer from '../../../components/Notion';
