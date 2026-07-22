@@ -1,5 +1,6 @@
 import { NotionAPI } from 'notion-client';
 import { getAllPagesInSpace, getPageTitle, parsePageId } from 'notion-utils';
+import { cache } from 'react';
 
 import { notFound, redirect } from 'next/navigation';
 import { Metadata } from 'next';
@@ -7,6 +8,7 @@ import Signature from '../../../components/Signature';
 import NotionRenderer from '../../../components/Notion';
 
 const notion = new NotionAPI();
+const getNotionPage = cache(async (id: string) => notion.getPage(id));
 
 export const revalidate = 60;
 
@@ -18,7 +20,7 @@ async function Page(props: Props) {
   if (!id) return notFound();
   if (id !== page) return redirect(id);
 
-  const recordMap = await notion.getPage(id);
+  const recordMap = await getNotionPage(id);
   if (!recordMap) return notFound();
 
   const title = getPageTitle(recordMap);
@@ -69,7 +71,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   if (!id) return notFound();
   if (id !== page) return redirect(id);
 
-  const recordMap = await notion.getPage(id);
+  const recordMap = await getNotionPage(id);
   if (!recordMap) return notFound();
 
   const title = getPageTitle(recordMap);
