@@ -1,4 +1,5 @@
 import { Client } from "@notionhq/client";
+import { cacheTag } from "next/cache";
 
 export interface ILink {
   "Friendly Name": string;
@@ -18,6 +19,8 @@ interface AirtableRes<T> {
 }
 
 export async function getLinks(): Promise<Record<string, ILink>> {
+  "use cache";
+  cacheTag("urlShortenerLinks")
   const res = await fetch(
     `https://api.airtable.com/v0/${process.env
       .AIRTABLE_BASE_ID!}/${encodeURIComponent(

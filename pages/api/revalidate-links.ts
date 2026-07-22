@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import { revalidatePath, updateTag } from 'next/cache';
 
 export default async function handler(
   req: NextApiRequest,
@@ -13,7 +14,8 @@ export default async function handler(
   }
 
   try {
-    await res.revalidate('/links/json');
+    updateTag('urlShortenerLinks')
+    revalidatePath('/[redirectSlug]', 'page')
     return res.json({ revalidated: true });
   } catch (err) {
     return res.status(500).send('Error revalidating');
