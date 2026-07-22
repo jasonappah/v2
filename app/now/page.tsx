@@ -31,8 +31,8 @@ function Content() {
               Interning as a software engineer at Rivian and Volkswagen Group
               Technologies.
             </li>
-            <li>Contemplating life, my future and my faith.</li>
-            <li> Learning piano. </li>
+            <li>Thinking about what's next after graduation (where to live, who to work for).</li>
+            <li>Learning piano.</li>
           </ul>
         </p>
       </div>
@@ -64,7 +64,7 @@ function Content() {
         heart of hearts, willing to listen to His guidance and surrender my
         desires if what I believe He wants is not what I want? How do I need to
         be letting Him shape these big decisions that I'm making? Is one of
-        these options "better" for me from a ministry perspective (considering
+        these options "better" for me from a missional perspective (considering
         how I can serve others and minister to people around me)?
       </p>
       <p>
