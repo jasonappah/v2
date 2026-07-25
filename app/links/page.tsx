@@ -1,6 +1,6 @@
 import Email from '../../components/Email';
 import Signature from '../../components/Signature';
-import { getLinks, getPublicLinkOrderingFromNotion } from '../../lib/server/getLinks';
+import { getLinks, getPublicLinkOrderingFromNotion, ILink } from '../../lib/server/getLinks';
 
 export const dynamic = 'error';
 
