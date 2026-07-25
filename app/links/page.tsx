@@ -15,6 +15,7 @@ async function LinkList() {
           <a
             className="p-4 w-full h-full bg-accent text-back hover:bg-back hover:text-accent transition border border-accent"
             href={link['Redirect URL']}
+            target='_blank'
           >
             {link['Friendly Name']}
           </a>
