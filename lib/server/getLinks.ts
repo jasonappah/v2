@@ -9,6 +9,7 @@ export interface ILink {
   Description: string;
   Active: boolean;
   Public: boolean;
+  _id: string;
 }
 
 interface AirtableRes<T> {
@@ -37,7 +38,7 @@ async function getLinksFromAirtable(): Promise<Record<string, ILink>> {
   const links: Record<string, ILink> = {};
   for (const record of records.records) {
     if (record.fields.Slug !== ".") {
-      links[record.fields.Slug] = record.fields;
+      links[record.fields.Slug] = {...record.fields, _id: record.id};
     }
   }
 
@@ -48,6 +49,43 @@ const notionClient = new NotionAPIClient({
   auth: process.env.NOTION_TOKEN,
 });
 
+const notionFilter = {
+  type: "checkbox",
+  property: "Active",
+  checkbox: {
+    equals: true
+  }
+}
+
+export const getPublicLinkOrderingFromNotion = unstable_cache(async () => {
+  const viewId = process.env.NOTION_URL_SHORTENER_VIEW_ID;
+  if (!viewId) {
+    throw new Error("NOTION_URL_SHORTENER_VIEW_ID is not set");
+  }
+  const pageOrderingQuery = (await notionClient.views.queries.create({
+    view_id: viewId,
+    query: {
+      filter: notionFilter
+    }
+  }))
+
+  const view = await notionClient.views.retrieve({
+    view_id: viewId
+  })
+  console.log(view)
+
+  await notionClient.views.queries.delete({
+    query_id: pageOrderingQuery.id,
+    view_id: pageOrderingQuery.view_id
+  })
+  
+  const pageOrdering = pageOrderingQuery.results.map((result) => result.id);
+  return pageOrdering;
+  // TODO: is there a better way to indicate to next/cache that this should get invalidated with getLinksFromNotion? maybe just put the same cache tag on both?
+},[],
+{ tags: ["urlShortener"], revalidate: 60 }
+)
+
 const getLinksFromNotion = unstable_cache(
   async (): Promise<Record<string, ILink>> => {
     const dbId = process.env.NOTION_URL_SHORTENER_DATABASE_ID;
@@ -56,29 +94,26 @@ const getLinksFromNotion = unstable_cache(
     }
     const urlShortenerNotionPages = await notionClient.dataSources.query({
       data_source_id: dbId,
-      filter: {
-        type: "checkbox",
-        "property": "Active",
-        checkbox: {
-          equals: true
-        }
-      }
+      filter: notionFilter
     });
 
     const links: Record<string, ILink> = {};
     for (const result of urlShortenerNotionPages.results) {
       if (!isFullPageOrDataSource(result)) { continue }
-      const flattenedFields = _flattenNotionPageProperties<ILink>(result.properties)
+      const flattenedFields = _flattenNotionPageProperties<Omit<ILink, "_id">>(result.properties)
 
       if (flattenedFields.Slug !== ".") {
-        links[flattenedFields.Slug] = flattenedFields;
+        links[flattenedFields.Slug] = {
+          ...flattenedFields,
+          _id: result.id
+        };
       }
     }
   
     return links
   },
-  ["url-shortener-links"],
-  { tags: ["urlShortenerLinks"], revalidate: 60 }
+  [],
+  { tags: ["urlShortener"], revalidate: 60 }
 )
 
 // Turns Notion property map with detailed meta (ex: id, rich text formating) into 
