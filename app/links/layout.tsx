@@ -17,8 +17,10 @@ async function LinkList({children}: LayoutProps<'/links'>) {
   return (
     <div className="flex flex-col gap-8 items-center">
       <Signature />
-      <Email />
-      {children}
+      <div className="flex flex-col gap-2 items-center">
+        <Email />
+        {children}
+      </div>
       {orderedLinks.map((link) => (
         <button key={link._id} type="button">
           <a
