@@ -13,7 +13,7 @@ async function LinkList({children}: LayoutProps<'/links'>) {
     return mapping
   }, {} as Record<string, ILink>)
   const orderedLinks = (await publicLinkOrdering).map(linkId => linkIdToLinkPayloadMap[linkId])
-  console.log(orderedLinks.map(link => `${link._id} -> ${link["Friendly Name"]}`))
+
   return (
     <div className="flex flex-col gap-8 items-center">
       <Signature />
