@@ -14,17 +14,62 @@ async function NfcKeyPage({params}: PageProps<"/links/[nfcKey]">) {
     if (phoneNumberDisplay === null) {
         notFound()
     }
-    const phoneNumberHref = formattedPhoneNumberToHref(phoneNumberDisplay)
+    
+    const phoneNumber = digitsOnlyPhoneNumber(phoneNumberDisplay)
+    const phoneNumberHref = "tel:" + phoneNumber
+    const addToContactsHref = vCardDataUrl({
+        name: "Jason Antwi-Appah",
+        email: Buffer.from("aGV5QGphc29uYWEubWU=", "base64").toString("utf8"),
+        phoneNumber,
+        photoUrl: "https://github.com/jasonappah.png",
+    })
     
     return (
-        <StyledLink href={phoneNumberHref}>
-            {phoneNumberDisplay}
-        </StyledLink>
+        <p>
+            <StyledLink href={phoneNumberHref}>
+                {phoneNumberDisplay}
+            </StyledLink>
+            &nbsp;&bull;&nbsp;
+            <a
+                href={addToContactsHref}
+                download="Jason Antwi-Appah.vcf"
+                className="transition text-accent hover:text-back hover:bg-content"
+            >
+                add to contacts
+            </a>
+        </p>
     )
 }
 
-const formattedPhoneNumberToHref = (phoneNumber: string) => 
-    "tel:" + Array.from(phoneNumber.matchAll(/[+\d]/g)).join("");
+const digitsOnlyPhoneNumber = (phoneNumber: string) =>
+    Array.from(phoneNumber.matchAll(/[+\d]/g)).join("");
+
+function vCardDataUrl({
+    name,
+    email,
+    phoneNumber,
+    photoUrl,
+}: {
+    name: string
+    email: string
+    phoneNumber: string
+    photoUrl: string
+}) {
+    const [firstName, ...rest] = name.split(" ")
+    const lastName = rest.join(" ")
+    const vcard = [
+        "BEGIN:VCARD",
+        "VERSION:3.0",
+        `N:${lastName};${firstName};;;`,
+        `FN:${name}`,
+        `EMAIL;TYPE=INTERNET:${email}`,
+        `TEL;TYPE=CELL:${phoneNumber}`,
+        `PHOTO;VALUE=URI:${photoUrl}`,
+        "END:VCARD",
+    ].join("\r\n")
+
+    return `data:text/vcard;charset=utf-8;base64,${Buffer.from(vcard).toString("base64")}`
+}
 
 export default NfcKeyPage
 
