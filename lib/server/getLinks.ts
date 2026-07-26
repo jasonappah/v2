@@ -49,13 +49,6 @@ const notionClient = new NotionAPIClient({
   auth: process.env.NOTION_TOKEN,
 });
 
-const notionFilter = {
-  type: "checkbox",
-  property: "Active",
-  checkbox: {
-    equals: true
-  }
-}
 
 export const getPublicLinkOrderingFromNotion = unstable_cache(async () => {
   const viewId = process.env.NOTION_URL_SHORTENER_VIEW_ID;
@@ -64,9 +57,6 @@ export const getPublicLinkOrderingFromNotion = unstable_cache(async () => {
   }
   const pageOrderingQuery = (await notionClient.views.queries.create({
     view_id: viewId,
-    query: {
-      filter: notionFilter
-    }
   }))
 
   const view = await notionClient.views.retrieve({
@@ -81,7 +71,6 @@ export const getPublicLinkOrderingFromNotion = unstable_cache(async () => {
   
   const pageOrdering = pageOrderingQuery.results.map((result) => result.id);
   return pageOrdering;
-  // TODO: is there a better way to indicate to next/cache that this should get invalidated with getLinksFromNotion? maybe just put the same cache tag on both?
 },[],
 { tags: ["urlShortener"], revalidate: 60 }
 )
@@ -94,7 +83,13 @@ const getLinksFromNotion = unstable_cache(
     }
     const urlShortenerNotionPages = await notionClient.dataSources.query({
       data_source_id: dbId,
-      filter: notionFilter
+      filter: {
+        type: "checkbox",
+        property: "Active",
+        checkbox: {
+          equals: true
+        }
+      }
     });
 
     const links: Record<string, ILink> = {};
