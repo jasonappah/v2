@@ -116,7 +116,7 @@ const getLinksFromNotion = unstable_cache(
 function _flattenNotionPageProperties<PropertySchema>
   (properties: (DataSourceObjectResponse | PageObjectResponse)["properties"]): PropertySchema {
   return Object.entries(properties).reduce((acc, [key, notionProperty]: [string, (typeof properties)[keyof typeof properties]] ) => {
-    let unwrappedValue: string | boolean | EmptyObject | null
+    let unwrappedValue: string | boolean | number | EmptyObject | null
     if (!notionProperty) return acc
     switch (notionProperty.type) {
       case "url":
@@ -130,6 +130,21 @@ function _flattenNotionPageProperties<PropertySchema>
         break;
       case "rich_text":
         unwrappedValue = notionProperty.rich_text.map((item) => item.plain_text).join("")
+        break;
+      case "number":
+        if (notionProperty.number === null) {
+          unwrappedValue = null
+        } else if (typeof notionProperty.number === "number") {
+          unwrappedValue = notionProperty.number
+        } else {
+          const coerced = Number(notionProperty.number.format)
+          if (Number.isNaN(coerced)) {
+            throw new Error(
+              `Failed to coerce number format "${notionProperty.number.format}" to a number for property "${key}"`
+            )
+          }
+          unwrappedValue = coerced
+        }
         break;
       case "button":
         unwrappedValue = notionProperty.button
