@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { decodeEmail } from "../../../lib/constants";
 import { getKey } from "../../../lib/server/getKV";
 import StyledLink from "../../../components/StyledLink";
 
@@ -14,12 +15,12 @@ async function NfcKeyPage({params}: PageProps<"/links/[nfcKey]">) {
     if (phoneNumberDisplay === null) {
         notFound()
     }
-    
+
     const phoneNumber = digitsOnlyPhoneNumber(phoneNumberDisplay)
     const phoneNumberHref = "tel:" + phoneNumber
     const addToContactsHref = vCardDataUrl({
         name: "Jason Antwi-Appah",
-        email: Buffer.from("aGV5QGphc29uYWEubWU=", "base64").toString("utf8"),
+        email: decodeEmail(),
         phoneNumber,
         photoUrl: "https://github.com/jasonappah.png",
     })

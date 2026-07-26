@@ -1,12 +1,13 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { decodeEmail } from '../lib/constants';
 import StyledLink from './StyledLink';
 
 function Email() {
   const [electronicMailIdentifier, setElectronicMailIdentifier] = useState('...');
   useEffect(() => {
-    setElectronicMailIdentifier(Buffer.from('aGV5QGphc29uYWEubWU=', 'base64').toString('utf8'));
+    setElectronicMailIdentifier(decodeEmail());
     console.log(
       '👋 you should also follow my Instagram: https://instagram.com/jasonaa_'
     );
