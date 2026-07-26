@@ -4,8 +4,7 @@ import { getLinks, getPublicLinkOrderingFromNotion, ILink } from '../../lib/serv
 
 export const dynamic = 'error';
 
-// props: LayoutProps<'/links'>
-async function LinkList() {
+async function LinkList({children}: LayoutProps<'/links'>) {
   const linkSlugToLinkPayloadMap = getLinks();
   const publicLinkOrdering = getPublicLinkOrderingFromNotion();
 
@@ -19,6 +18,7 @@ async function LinkList() {
     <div className="flex flex-col gap-8 items-center">
       <Signature />
       <Email />
+      {children}
       {orderedLinks.map((link) => (
         <button key={link._id} type="button">
           <a
